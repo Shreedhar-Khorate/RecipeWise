@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecipeWise - About Us</title>
+    <link rel="icon" href="https://static.vecteezy.com/system/resources/previews/020/784/802/non_2x/recipe-book-icon-vector.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Open+Sans:wght@300&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: #1e1e1e;
+            color: #00e5ff;
+        }
+
+        .navbar {
+            background-color: #333;
+            padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-list {
+            list-style-type: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list .brand {
+            margin-right: auto;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .nav-list .brand a {
+            color: #00e5ff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .book {
+            color: #00e5ff;
+            font-size: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        .wise {
+            color: #ff4081;
+            font-size: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        .book:hover {
+            color: #1de9b6;
+        }
+
+        .wise:hover {
+            color: #ff80ab;
+        }
+
+        .nav-list li {
+            margin: 0 1rem;
+        }
+
+        .nav-list a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .nav-list a:hover {
+            color: #00e5ff;
+        }
+
+        .about-container {
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            width: 100%;
+            max-width: 800px;
+            background: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin: 2rem auto;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-container:hover {
+            background: #2c2c2c;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .about-box {
+            text-align: center;
+            border: 2px solid #ff4081;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 100%;
+        }
+
+        .about-box h2 {
+            margin-bottom: 1.5rem;
+            color: #00e5ff;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .about-box p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #b0bec5;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 300;
+        }
+
+        .contact-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .contact-box {
+            background: #1e1e1e;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            border: 2px solid #ff4081;
+            margin-bottom: 2rem;
+        }
+
+        .contact-box h2 {
+            margin-bottom: 1.5rem;
+            color: #00e5ff;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .user-box {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .user-box input, .user-box textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            color: #e0e0e0;
+            margin-bottom: 1rem;
+            border: 2px solid #444;
+            border-radius: 8px;
+            outline: none;
+            background: #2c2c2c;
+        }
+
+        .user-box input:focus, .user-box textarea:focus {
+            border-color: #00e5ff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .user-box label {
+            position: absolute;
+            top: 40%;
+            left: 12px;
+            padding: 12px 0;
+            font-size: 1rem;
+            color: #00e5ff;
+            pointer-events: none;
+            transition: 0.3s ease;
+            transform: translateY(-50%);
+        }
+
+        .user-box input:focus ~ label, .user-box input:valid ~ label,
+        .user-box textarea:focus ~ label, .user-box textarea:valid ~ label {
+            top: -15px;
+            left: 8px;
+            color: #ff4081;
+            font-size: 0.8rem;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .submit-button {
+            background: #00e5ff;
+            border: none;
+            padding: 12px 0;
+            color: #121212;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            background: #1de9b6;
+        }
+
+        .reset-button {
+            background: #ff4081;
+            border: none;
+            padding: 12px 0;
+            color: #121212;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .reset-button:hover {
+            background: #ff80ab;
+        }
+
+        .footer {
+            background-color: #1e1e1e;
+            color: #00e5ff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li class="brand"><a href="#"><span class="book">Recipe</span><span class="wise">Wise</span></a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/aboutus">About Us</a></li>
+                <li><a href="/recommend">Recommend</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="about-container">
+        <div class="about-box">
+            <h2>About Us</h2>
+            <p>Welcome to RecipeWise! We are passionate about helping you discover the perfect recipe. Whether you're craving savory appetizers, sweet desserts, hearty mains, or healthy snacks, we’ve got personalized recommendations just for you.</p>
+            <p>Our mission is to make recipe discovery easy and enjoyable. With our advanced platform, you can find dishes that align with your taste preferences and dietary needs.</p>
+            <p>At RecipeWise, we believe that cooking brings people together and opens up a world of flavors. Join our community and embark on endless culinary adventures.</p>
+            <p>Our team consists of food enthusiasts who love exploring new cuisines and sharing their discoveries. With a background in culinary arts, technology, and data science, we blend our passions to provide you with top-notch recipe recommendations.</p>
+            <p>We are dedicated to creating a space where every food lover can find their next favorite dish and connect with others who share their love for cooking. Thank you for being part of our journey!</p>
+        </div>
+    </div>
+
+    <div class="contact-container">
+        <div class="contact-box">
+            <h2>Send Us a Suggestion</h2>
+            <form id="contactForm" novalidate>
+                <div class="user-box">
+                    <input type="text" name="name" required="" id="name">
+                    <label for="name">Name</label>
+                </div>
+                <div class="user-box">
+                    <input type="email" name="email" required="" id="email">
+                    <label for="email">Email</label>
+                </div>
+                <div class="user-box">
+                    <textarea name="message" required="" id="message" rows="4"></textarea>
+                    <label for="message">Message</label>
+                </div>
+                <div class="button-group">
+                    <button type="submit" id="submitButton" class="submit-button">Submit</button>
+                    <button type="reset" class="reset-button">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const form = event.target;
+            if (form.checkValidity()) {
+                alert('Your message has been sent successfully');
+                form.reset();
+            } else {
+                alert('Please fill out all fields correctly');
+            }
+        });
+    </script>
+
+    <footer class="footer">
+        <p>&copy; RecipeWise. All rights reserved.</p>
+    </footer>
+</body>
+</html>

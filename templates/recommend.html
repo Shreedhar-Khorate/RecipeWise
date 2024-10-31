@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RecipeWise - Recipe Generator</title>
+    <link
+      rel="icon"
+      href="https://static.vecteezy.com/system/resources/previews/020/784/802/non_2x/recipe-book-icon-vector.jpg"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Open+Sans:wght@300&display=swap"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: #121212;
+        color: #e0e0e0;
+        line-height: 1.6;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .header {
+        background-color: #1f1f1f;
+      }
+
+      .navbar {
+        background-color: #333;
+        padding: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      }
+
+      .nav-list {
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-list .brand {
+        margin-right: auto;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+
+      .nav-list .brand a {
+        color: #00e5ff;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+
+      .book {
+        color: #ff4081;
+        font-size: 2rem;
+        transition: color 0.3s ease;
+      }
+
+      .wise {
+        color: #00e5ff;
+        font-size: 2rem;
+        transition: color 0.3s ease;
+      }
+
+      .book:hover {
+        color: #ff80ab;
+      }
+
+      .wise:hover {
+        color: #18ffff;
+      }
+
+      .nav-list li {
+        margin: 0 1rem;
+      }
+
+      .nav-list a {
+        color: #e0e0e0;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      .nav-list a:hover {
+        color: #00e5ff;
+      }
+
+      .suggest {
+        background-color: #1f1f1f;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        margin: 2rem auto;
+        max-width: 100%;
+        width: 80%;
+      }
+
+      .suggest label {
+        color: #ff4081;
+        font-weight: bold;
+        display: block;
+        margin-bottom: 1rem;
+      }
+
+      .suggest input[type="number"],
+      .suggest input[type="text"] {
+        background-color: #333;
+        color: #e0e0e0;
+        border: none;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        border-radius: 5px;
+        width: 100%;
+      }
+
+      .suggest button {
+        background-color: #00e5ff;
+        color: #121212;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .suggest button:hover {
+        background-color: #18ffff;
+      }
+
+      .dish-details {
+        margin-top: 20px;
+        background-color: #2a2a2a;
+        padding: 1rem;
+        border-radius: 10px;
+        color: #e0e0e0;
+      }
+
+      .dish-details h3 {
+        color: #ff4081;
+        margin-top: 0;
+      }
+
+      .dish-details h4 {
+        color: #00e5ff;
+      }
+
+      .dish-details ul,
+      .dish-details ol {
+        margin: 0.5rem 0 0.5rem 1.5rem;
+      }
+
+      .footer {
+        background-color: #333;
+        color: #00e5ff;
+        text-align: center;
+        padding: 1rem 0;
+        margin-top: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar">
+        <ul class="nav-list">
+          <li class="brand">
+            <a href="#"
+              ><span class="book">Recipe</span><span class="wise">Wise</span></a
+            >
+          </li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/aboutus">About Us</a></li>
+          <li><a href="/recommend">Recommend</a></li>
+          <li><a href="/login">Login</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="suggest">
+      <label for="arraySize">Enter the number of ingredients for making a dish:</label>
+      <input type="number" id="arraySize" min="1" />
+      <button onclick="generateInputFields()">Done</button>
+
+      <div id="inputContainer"></div>
+      <button onclick="submitArray()" style="display: none" id="submitButton">Submit</button>
+
+      <div id="dishDetails" class="dish-details"></div>
+    </div>
+
+    <script>
+      function generateInputFields() {
+        const arraySize = document.getElementById("arraySize").value;
+        const inputContainer = document.getElementById("inputContainer");
+        inputContainer.innerHTML = "";
+
+        for (let i = 0; i < arraySize; i++) {
+          const label = document.createElement("label");
+          label.innerText = `Ingredient ${i + 1}: `;
+
+          const ingredientInput = document.createElement("input");
+          ingredientInput.type = "text";
+          ingredientInput.placeholder = "Enter ingredient name";
+          ingredientInput.className = "ingredientName";
+          ingredientInput.name = `ingredient_${i}`;
+
+          inputContainer.appendChild(label);
+          inputContainer.appendChild(ingredientInput);
+          inputContainer.appendChild(document.createElement("br"));
+        }
+
+        document.getElementById("submitButton").style.display = "block";
+      }
+
+      function submitArray() {
+        const ingredients = Array.from(
+          document.getElementsByClassName("ingredientName")
+        ).map((input) => input.value);
+
+        fetch("/submit_ingredients", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ ingredients }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            const dishDetails = document.getElementById("dishDetails");
+            dishDetails.innerHTML = ""; // Clear previous results
+
+            data.forEach((dish, index) => {
+              dishDetails.innerHTML += `
+                <div>
+                  <h3>Dish ${index + 1}: ${dish.DishName}</h3>
+                  <div class="dish-ingredients">
+                    <h4>Ingredients:</h4>
+                    <ul>${dish.DishIngredients.map(
+                      (ingredient) => `<li>${ingredient}</li>`
+                    ).join("")}</ul>
+                  </div>
+                  <div class="dish-steps">
+                    <h4>Steps:</h4>
+                    <ol>${dish.DishSteps.map(
+                      (step) => `<li>${step}</li>`
+                    ).join("")}</ol>
+                  </div>
+                </div>
+              `;
+            });
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+    </script>
+
+    <footer class="footer">
+      <p>&copy; RecipeWise. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RecipeWise - Recipe Book</title>
+    <link rel="icon" href="https://static.vecteezy.com/system/resources/previews/020/784/802/non_2x/recipe-book-icon-vector.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Open+Sans:wght@300&display=swap" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: #121212;
+        color: #e0e0e0;
+        line-height: 1.6;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .header {
+        background-color: #1f1f1f;
+      }
+
+      .navbar {
+        background-color: #333;
+        padding: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      }
+
+      .nav-list {
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-list .brand {
+        margin-right: auto;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+
+      .nav-list .brand a {
+        color: #00e5ff;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+
+      .book {
+        color: #ff4081;
+        font-size: 2rem;
+        transition: color 0.3s ease;
+      }
+
+      .wise {
+        color: #00e5ff;
+        font-size: 2rem;
+        transition: color 0.3s ease;
+      }
+
+      .book:hover {
+        color: #ff80ab;
+      }
+
+      .wise:hover {
+        color: #18ffff;
+      }
+
+      .nav-list li {
+        margin: 0 1rem;
+      }
+
+      .nav-list a {
+        color: #e0e0e0;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      .nav-list a:hover {
+        color: #00e5ff;
+      }
+
+      .main-content {
+        flex: 1;
+        padding: 2rem;
+        background-color: #1f1f1f;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+        margin: 2rem auto;
+        max-width: 100%;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .intro {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        padding: 2rem;
+        background: linear-gradient(to right, #333, #121212);
+        border-radius: 10px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+      }
+
+      .intro-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+        transform: rotate(-5deg);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .intro-image:hover {
+        transform: rotate(0deg);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.9);
+      }
+
+      .intro-text {
+        flex: 1;
+        background-color: #333;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        color: #e0e0e0;
+        margin-left: 1rem;
+        text-align: center;
+      }
+
+      .intro-text h1 {
+        color: #ff4081;
+        margin-bottom: 1rem;
+        font-size: 2.5rem;
+        font-weight: bold;
+        line-height: 1.3;
+        position: relative;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+      }
+
+      .intro-text h1 .highlight {
+        color: #00e5ff;
+        background: linear-gradient(90deg, #ff4081 0%, #00e5ff 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+
+      .intro-text p {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        font-family: "Open Sans", sans-serif;
+        font-weight: 300;
+      }
+
+      .footer {
+        background-color: #333;
+        color: #00e5ff;
+        text-align: center;
+        padding: 1rem 0;
+      }
+
+      .footer p {
+        margin: 0;
+      }
+
+      @media (max-width: 768px) {
+        .nav-list {
+          flex-direction: column;
+        }
+
+        .nav-list li {
+          margin: 0.5rem 0;
+        }
+
+        .intro {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .intro-image {
+          width: 100%;
+        }
+
+        .intro-text {
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .col-md-3 {
+          flex: 1 1 calc(100% - 1rem);
+          max-width: calc(100% - 1rem);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="header">
+      <nav class="navbar">
+        <ul class="nav-list">
+          <li class="brand">
+            <a href="#"
+              ><span class="book">Recipe</span><span class="wise">Wise</span></a
+            >
+          </li>
+          <li><a href="#">Home</a></li>
+          <li><a href="/aboutus">About Us</a></li>
+          <li><a href="/recommend">Recommend</a></li>
+          <li><a href="/login">Login</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="main-content">
+      <section class="intro">
+        <img
+          src="https://i.pinimg.com/736x/d3/6f/0f/d36f0fc4fd91a3e01c7260708f0998fd.jpg"
+          alt="Reading Books"
+          class="intro-image"
+          width="350"
+        />
+        <div class="intro-text">
+          <h1>Welcome to <span class="highlight">RecipeWise</span></h1>
+          <p>
+            Indulge in a world of flavors with <i>RecipeWise</i>, your culinary
+            companion that guides you to new tastes and cherished classics. Dive
+            into dishes that align with your cravings, from comforting meals
+            that bring back memories to inventive plates that spark inspiration.
+            Explore a diverse array of recipes suited to every occasion, dietary
+            need, and level of expertise. With <i>RecipeWise</i>, every meal
+            becomes an opportunity to enjoy the artistry and joy of cooking,
+            letting you explore beloved traditions and discover new favorites
+            with ease.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; RecipeWise. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
